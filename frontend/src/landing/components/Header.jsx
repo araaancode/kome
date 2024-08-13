@@ -29,11 +29,11 @@ export default function Header() {
 
         <Link to={userToken ? '/profile' : '/login'}>
           <div style={{ width: '120px', height: '60px' }} className="flex items-center p-2 space-x-2 w-2/8 justify-end hover:border hover:rounded-full hover:shadow-lg">
-            <div className="w-10 h-10 mx-3">
+            <div className="w-10 h-10 mx-3 bg-white rounded-full">
               <img
-                src="https://www.homsa.net/images/user_pic-225x225.png"
+                src="https://cdn-icons-png.flaticon.com/128/17384/17384295.png"
                 alt="Avatar"
-                className="w-full h-full object-cover rounded-full"
+                className="w-full h-full object-cover rounded-full text-white"
               />
             </div>
             <RiMenuLine className="text-white w-6 h-6 font-bold" />

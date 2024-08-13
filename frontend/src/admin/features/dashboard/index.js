@@ -13,13 +13,29 @@ import DashboardTopBar from './components/DashboardTopBar'
 import { useDispatch } from 'react-redux'
 import {showNotification} from '../common/headerSlice'
 import DoughnutChart from './components/DoughnutChart'
+
 import { useState } from 'react'
 
+
+// react icons
+import { HiOutlineUserPlus } from "react-icons/hi2";
+import { LiaBusSolid } from "react-icons/lia";
+import { PiChefHat } from "react-icons/pi";
+import { PiUsersFourLight } from "react-icons/pi";
+import { PiCoinsLight } from "react-icons/pi";
+import { LiaUserAstronautSolid } from "react-icons/lia";
+import { LiaUserSecretSolid } from "react-icons/lia";
+import { PiHouse } from "react-icons/pi";
+
 const statsData = [
-    {title : "کاربران جدید", value : "۳۴.۷k", icon : <UserGroupIcon className='w-8 h-8'/>, description : "↗︎ 2300 (22%)"},
-    {title : "کل فروش", value : "۳۴۵۴۵", icon : <CreditCardIcon className='w-8 h-8'/>, description : "ماه جاری"},
-    {title : "ادمین ها", value : "۴۵۰", icon : <CircleStackIcon className='w-8 h-8'/>, description : "ادمین فعال"},
-    {title : "کاربران فعال", value : "۵.۶k", icon : <UsersIcon className='w-8 h-8'/>, description : "↙ 300 (18%)"},
+    {title : "کل فروش", value : "۳۴۵۴۵", icon : <PiCoinsLight className='w-8 h-8'/>, description : "ماه جاری"},
+    {title : "کاربران فعال", value : "۵.۶k", icon : <PiUsersFourLight className='w-8 h-8'/>, description : "↙ 300 (18%)"},
+    {title : "کاربران جدید", value : "۳۴.۷k", icon : <HiOutlineUserPlus className='w-8 h-8'/>, description : "↗︎ 2300 (22%)"},
+    {title : "ادمین ها", value : "۴۵۰", icon : <LiaUserSecretSolid className='w-8 h-8'/>, description : "ادمین فعال"},
+    {title : "راننده ها", value : "۵.۶k", icon : <LiaUserAstronautSolid className='w-8 h-8'/>, description : "↙ 2000 (18%)"},
+    {title : "ملک دارها", value : "۵.۶k", icon : <PiHouse className='w-8 h-8'/>, description : "↗︎ 150 (18%)"},
+    {title : "غذا دارها", value : "۵.۶k", icon : <PiChefHat className='w-8 h-8'/>, description : "↗︎ 10 (18%)"},
+    {title : "اتوبوس ها", value : "۵.۶k", icon : <LiaBusSolid className='w-8 h-8'/>, description : "↙ 345 (18%)"},
 ]
 
 

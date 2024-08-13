@@ -19,26 +19,29 @@ import RoomsIcon from '@iconscout/react-unicons/icons/uil-trees'
 import HomeIcon from '@heroicons/react/24/outline/HomeModernIcon'
 import AdminsIcon from '@iconscout/react-unicons/icons/uil-user-square'
 
+import { LiaUserSecretSolid } from "react-icons/lia";
+import { PiChefHat } from "react-icons/pi";
+import { PiHouse } from "react-icons/pi";
 
-const iconClasses = `h-6 w-6`
+const iconClasses = `h-8 w-8 text-gray-800`
 const submenuIconClasses = `h-5 w-5`
 
 const routes = [
 
   {
     path: '/admins/dashboard',
-    icon: <DashboardIcon size="140" className={iconClasses} />, 
+    icon: <DashboardIcon className={iconClasses} />, 
     name: 'داشبورد مدیریت',
   },
   {
     path: '/admins/all-admins',
-    icon: <AdminsIcon size="140" className={iconClasses} />, 
+    icon: <LiaUserSecretSolid className={iconClasses} />, 
     name: 'ادمین ها',
   },
   {
     path: '/admins/requests', // url
     // path: '/admins/leads', // url
-    icon: <FileSearchIcon size="140" className={iconClasses} />, // icon component
+    icon: <FileSearchIcon className={iconClasses} />, // icon component
     name: ' درخواست ها ', // name that appear in Sidebar
   },
   {
@@ -74,14 +77,14 @@ const routes = [
 
   {
     path: '/admins/cooks', // url
-    icon: <CooksIcon className={iconClasses}/>, // icon component
+    icon: <PiChefHat className={iconClasses}/>, // icon component
     name: 'غذادارها ', // name that appear in Sidebar
   },
 
   {
     path: '/admins/rooms', // url
     // path: '/admins/calendar', // url
-    icon: <RoomsIcon className={iconClasses}/>, // icon component
+    icon: <PiHouse className={iconClasses}/>, // icon component
     name: 'اقامتگاه ها', // name that appear in Sidebar
   },
 

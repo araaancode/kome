@@ -8,6 +8,11 @@ import SunIcon from '@heroicons/react/24/outline/SunIcon'
 import { openRightDrawer } from '../features/common/rightDrawerSlice';
 import { RIGHT_DRAWER_TYPES } from '../utils/globalConstantUtil'
 
+import { GoSun } from "react-icons/go";
+import { SlUser } from "react-icons/sl";
+import { PiBell } from "react-icons/pi";
+import { PiUsersFourLight } from "react-icons/pi";
+
 import { NavLink, Routes, Link, useLocation } from 'react-router-dom'
 
 
@@ -57,28 +62,28 @@ function Header() {
 
 
 
-                <div className="flex-none ">
-                    <label className="swap ">
+                <div className="flex items-center flex-end">
+                    {/* <label className="swap ">
                         <input type="checkbox" />
-                        <SunIcon data-set-theme="light" data-act-class="ACTIVECLASS" className={"fill-current w-6 h-6 " + (currentTheme === "dark" ? "swap-on" : "swap-off")} />
+                        <GoSun data-set-theme="light" data-act-class="ACTIVECLASS" className={"fill-current w-6 h-6 " + (currentTheme === "dark" ? "swap-on" : "swap-off")} />
                         <MoonIcon data-set-theme="dark" data-act-class="ACTIVECLASS" className={"fill-current w-6 h-6 " + (currentTheme === "light" ? "swap-on" : "swap-off")} />
-                    </label>
+                    </label> */}
 
 
                     {/* Notification icon */}
-                    <button className="btn btn-ghost ml-4  btn-circle" onClick={() => openNotification()}>
+                    <button className="mx-2" onClick={() => openNotification()}>
                         <div className="indicator">
-                            <BellIcon className="h-6 w-6" />
+                            <PiBell className="h-6 w-6" />
                             {noOfNotifications > 0 ? <span className="indicator-item badge badge-secondary badge-sm">{noOfNotifications}</span> : null}
                         </div>
                     </button>
 
 
                     {/* Profile icon, opening menu on click */}
-                    <div className="dropdown dropdown-end ml-4">
-                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img src="https://cdn-icons-png.flaticon.com/128/2194/2194807.png" alt="profile" />
+                    <div className="dropdown dropdown-end">
+                        <label tabIndex={0} className="avatar">
+                            <div className="mx-4 hover:cursor-pointer">
+                                <SlUser className="w-6 h-6" />
                             </div>
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
