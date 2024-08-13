@@ -33,39 +33,37 @@ import PrivateRoutes from "./landing/routing/privateRoutes"
 
 
 // Importing pages
-const Layout = lazy(() => import('./admin/containers/Layout'))
-const Login = lazy(() => import('./admin/pages/Login'))
-const ForgotPassword = lazy(() => import('./admin/pages/ForgotPassword'))
-const Register = lazy(() => import('./admin/pages/Register'))
-// const Documentation = lazy(() => import('./admin/pages/Documentation'))
+import Layout from "./admin/containers/Layout"
+import Login from "./admin/pages/Login"
+import ForgotPassword from "./admin/pages/ForgotPassword"
+import Register from "./admin/pages/Register"
+
 
 // drivers pages
-const DriversLayout = lazy(() => import('./drivers/containers/Layout'))
-const DriversLogin = lazy(() => import('./drivers/pages/Login'))
-const DriversForgotPassword = lazy(() => import('./drivers/pages/ForgotPassword'))
-const DriversRegister = lazy(() => import('./drivers/pages/Register'))
+import DriversLayout from "./drivers/containers/Layout"
+import DriversLogin from "./drivers/pages/Login"
+import DriversRegister from "./drivers/pages/Register"
+import DriversForgotPassword from "./drivers/pages/ForgotPassword"
 
 // owners pages
-const OwnersLayout = lazy(() => import('./owners/containers/Layout'))
-const OwnersLogin = lazy(() => import('./owners/pages/Login'))
-const OwnersForgotPassword = lazy(() => import('./owners/pages/ForgotPassword'))
-const OwnersRegister = lazy(() => import('./owners/pages/Register'))
+import OwnersLayout from "./owners/containers/Layout"
+import OwnersLogin from "./owners/pages/Login"
+import OwnersRegister from "./owners/pages/Register"
+import OwnersForgotPassword from "./owners/pages/ForgotPassword"
 
 // cooks pages
-const CooksLayout = lazy(() => import('./cooks/containers/Layout'))
-const CooksLogin = lazy(() => import('./cooks/pages/Login'))
-const CooksForgotPassword = lazy(() => import('./cooks/pages/ForgotPassword'))
-const CooksRegister = lazy(() => import('./cooks/pages/Register'))
-
-
+import CooksLayout from "./cooks/containers/Layout"
+import CooksLogin from "./cooks/pages/Login"
+import CooksRegister from "./cooks/pages/Register"
+import CooksForgotPassword from "./cooks/pages/ForgotPassword"
 
 
 // Initializing different libraries
 initializeApp()
 
-
 // Check for login and initialize axios
-const token = checkAuth()
+// const token = checkAuth()
+const token = localStorage.getItem("token")
 
 axios.defaults.baseURL = "http://localhost:5000/";
 axios.defaults.withCredentials = true;

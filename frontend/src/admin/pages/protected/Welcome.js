@@ -6,12 +6,6 @@ import TemplatePointers from '../../features/user/components/TemplatePointers'
 
 function InternalPage(){
 
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(setPageTitle({ title : ""}))
-      }, [])
-
     return(
       <div className="hero h-4/5 bg-base-200">
       <div className="hero-content">
