@@ -1,14 +1,13 @@
 import moment from "moment"
 import { useEffect, useState } from "react"
+import { setPageTitle,showNotification } from '../features/common/headerSlice'
 import { useDispatch, useSelector } from "react-redux"
-import { showNotification } from "../features/common/headerSlice"
 import TitleCard from "../components/Cards/TitleCard"
 import { RECENT_TRANSACTIONS } from "../utils/dummyData"
 import FunnelIcon from '@heroicons/react/24/outline/FunnelIcon'
 import XMarkIcon from '@heroicons/react/24/outline/XMarkIcon'
 import SearchBar from "../components/Input/SearchBar"
 const MomentJalali = require("moment-jalaali")
-
 
 const TopSideButtons = ({ removeFilter, applyFilter, applySearch }) => {
 
@@ -57,7 +56,10 @@ const TopSideButtons = ({ removeFilter, applyFilter, applySearch }) => {
 
 
 function Financials() {
-
+    const dispatch = useDispatch()
+    useEffect(() => {
+      dispatch(setPageTitle({ title: "بخش مالی" }))
+    }, [])
 
     const [trans, setTrans] = useState(RECENT_TRANSACTIONS)
 

@@ -8,7 +8,7 @@ import { CONFIRMATION_MODAL_CLOSE_TYPES, MODAL_BODY_TYPES } from '../utils/globa
 import { openModal } from "../features/common/modalSlice"
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-
+import { setPageTitle } from '../features/common/headerSlice'
 
 // load icons
 import AnswerIcon from '@iconscout/react-unicons/icons/uil-chat'
@@ -37,11 +37,11 @@ const TopSideButtons = () => {
 
 const TEAM_MEMBERS = [
   { name: "کاربر یک", avatar: "https://cdn-icons-png.flaticon.com/128/3069/3069172.png", ticket: "تیکت یک", status: "دیده شده" },
-  { name: "کاربر دو", avatar: "https://cdn-icons-png.flaticon.com/128/2153/2153090.png", ticket: "تیکت دو", status: "دیده نشده"},
-  { name: "کاربر سه", avatar: "https://cdn-icons-png.flaticon.com/128/1864/1864472.png", ticket: "تیکت سه", status: "دیده شده"},
-  { name: "کاربر چهار", avatar: "https://cdn-icons-png.flaticon.com/128/1998/1998627.png", ticket: "تیکت چهار", status: "دیده شده"},
-  { name: "کاربر پنج", avatar: "https://cdn-icons-png.flaticon.com/128/1864/1864475.png", ticket: "تیکت پنج", status: "دیده نشده"},
-  { name: "کاربر شش", avatar: "https://cdn-icons-png.flaticon.com/128/809/809052.png", ticket: "تیکت شش", status: "دیده نشده"},
+  { name: "کاربر دو", avatar: "https://cdn-icons-png.flaticon.com/128/2153/2153090.png", ticket: "تیکت دو", status: "دیده نشده" },
+  { name: "کاربر سه", avatar: "https://cdn-icons-png.flaticon.com/128/1864/1864472.png", ticket: "تیکت سه", status: "دیده شده" },
+  { name: "کاربر چهار", avatar: "https://cdn-icons-png.flaticon.com/128/1998/1998627.png", ticket: "تیکت چهار", status: "دیده شده" },
+  { name: "کاربر پنج", avatar: "https://cdn-icons-png.flaticon.com/128/1864/1864475.png", ticket: "تیکت پنج", status: "دیده نشده" },
+  { name: "کاربر شش", avatar: "https://cdn-icons-png.flaticon.com/128/809/809052.png", ticket: "تیکت شش", status: "دیده نشده" },
 
 ]
 
@@ -69,6 +69,10 @@ const deleteUser = () => {
 }
 
 const Tickets = () => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(setPageTitle({ title: "تیکت ها" }))
+  }, [])
 
   const [members, setMembers] = useState(TEAM_MEMBERS)
 

@@ -8,7 +8,7 @@ import { CONFIRMATION_MODAL_CLOSE_TYPES, MODAL_BODY_TYPES } from '../utils/globa
 import { openModal } from "../features/common/modalSlice"
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-
+import { setPageTitle } from '../features/common/headerSlice'
 
 // load icons
 import DeleteIcon from '@iconscout/react-unicons/icons/uil-trash-alt'
@@ -70,6 +70,11 @@ const deleteUser = () => {
 }
 
 const Admins = () => {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(setPageTitle({ title: " کاربران" }))
+    }, [])
+
 
     const [members, setMembers] = useState(TEAM_MEMBERS)
 
