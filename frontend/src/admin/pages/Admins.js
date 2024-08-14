@@ -8,6 +8,7 @@ import { CONFIRMATION_MODAL_CLOSE_TYPES, MODAL_BODY_TYPES } from '../utils/globa
 import { openModal } from "../features/common/modalSlice"
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import { setPageTitle } from '../features/common/headerSlice'
 
 
 // load icons
@@ -26,11 +27,9 @@ const TopSideButtons = () => {
         dispatch(openModal({ title: "ایجاد ادمین جدید", bodyType: MODAL_BODY_TYPES.ADD_NEW_ADMIN }))
     }
 
-
-
     return (
-        <div className="inline-block float-right">
-            <button className="btn px-6 btn-sm normal-case btn-primary" onClick={() => createNewUser()}>ایجاد ادمین جدید</button>
+        <div className="inline-block">
+            <button className="btn p-4 bg-blue-800 hover:bg-blue-900 text-white" onClick={() => createNewUser()}>ایجاد ادمین جدید</button>
         </div>
     )
 }
@@ -51,7 +50,6 @@ const updateUser = () => {
 }
 
 
-
 const deleteUser = () => {
     Swal.fire({
         title: "آیا از حذف ادمین اطمینان دارید؟",
@@ -70,6 +68,11 @@ const deleteUser = () => {
 }
 
 const Admins = () => {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(setPageTitle({ title: "ادمین ها" }))
+    }, [])
+
 
     const [members, setMembers] = useState(TEAM_MEMBERS)
 
