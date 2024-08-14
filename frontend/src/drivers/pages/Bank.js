@@ -9,6 +9,7 @@ import { openModal } from "../features/common/modalSlice"
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import { setPageTitle } from '../features/common/headerSlice'
+import Subtitle from "../components/Typography/Subtitle"
 
 
 // load icons
@@ -20,69 +21,88 @@ import UpdateAdmin from "../features/admins/UpdateAdmin"
 
 const TopSideButtons = () => {
 
-    const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
-    const createNewUser = () => {
-        // dispatch(showNotification({ message: "Add New Member clicked", status: 1 }))
-        dispatch(openModal({ title: "ایجاد اقامتگاه جدید", bodyType: MODAL_BODY_TYPES.ADD_NEW_ADMIN }))
-    }
+  const createNewUser = () => {
+    // dispatch(showNotification({ message: "Add New Member clicked", status: 1 }))
+    dispatch(openModal({ title: "ایجاد اقامتگاه جدید", bodyType: MODAL_BODY_TYPES.ADD_NEW_ADMIN }))
+  }
 
 
 
-    // return (
-    //     <div className="inline-block float-right">
-    //         <button className="btn px-6 btn-sm normal-case btn-primary" onClick={() => createNewUser()}>ایجاد کاربر جدید</button>
-    //     </div>
-    // )
+  // return (
+  //     <div className="inline-block float-right">
+  //         <button className="btn px-6 btn-sm normal-case btn-primary" onClick={() => createNewUser()}>ایجاد کاربر جدید</button>
+  //     </div>
+  // )
 }
 
 
 const TEAM_MEMBERS = [
-    { name: "اقامتگاه یک", avatar: "https://cdn-icons-png.flaticon.com/128/2082/2082563.png", city: "تهران", owner: "مالک یک", price: 1000, lastActive: "5 hr ago" },
-    { name: "اقامتگاه دو", avatar: "https://cdn-icons-png.flaticon.com/128/1020/1020535.png", city: "ماسوله", owner: "مالک دو", price: 2000, lastActive: "15 min ago" },
-    { name: "اقامتگاه سه", avatar: "https://cdn-icons-png.flaticon.com/128/3153/3153859.png", city: "یزد", owner: "مالک سه", price: 3000, lastActive: "20 hr ago" },
-    { name: "اقامتگاه چهار", avatar: "https://cdn-icons-png.flaticon.com/128/1600/1600667.png", city: "خوزستان", owner: "مالک چهار", price: 4000, lastActive: "1 hr ago" },
-    { name: "اقامتگاه پنج", avatar: "https://cdn-icons-png.flaticon.com/128/3313/3313260.png", city: "یزد", owner: "مالک پنج", price: 5000, lastActive: "40 min ago" },
-    { name: "اقامتگاه شش", avatar: "https://cdn-icons-png.flaticon.com/128/2350/2350864.png", city: "آذربایجان", owner: "مالک شش", price: 60000, lastActive: "5 hr ago" },
+  { name: "اقامتگاه یک", avatar: "https://cdn-icons-png.flaticon.com/128/2082/2082563.png", city: "تهران", owner: "مالک یک", price: 1000, lastActive: "5 hr ago" },
+  { name: "اقامتگاه دو", avatar: "https://cdn-icons-png.flaticon.com/128/1020/1020535.png", city: "ماسوله", owner: "مالک دو", price: 2000, lastActive: "15 min ago" },
+  { name: "اقامتگاه سه", avatar: "https://cdn-icons-png.flaticon.com/128/3153/3153859.png", city: "یزد", owner: "مالک سه", price: 3000, lastActive: "20 hr ago" },
+  { name: "اقامتگاه چهار", avatar: "https://cdn-icons-png.flaticon.com/128/1600/1600667.png", city: "خوزستان", owner: "مالک چهار", price: 4000, lastActive: "1 hr ago" },
+  { name: "اقامتگاه پنج", avatar: "https://cdn-icons-png.flaticon.com/128/3313/3313260.png", city: "یزد", owner: "مالک پنج", price: 5000, lastActive: "40 min ago" },
+  { name: "اقامتگاه شش", avatar: "https://cdn-icons-png.flaticon.com/128/2350/2350864.png", city: "آذربایجان", owner: "مالک شش", price: 60000, lastActive: "5 hr ago" },
 
 ]
 
 const updateUser = () => {
-    alert("update user")
+  alert("update user")
 }
 
 
 
 const deleteUser = () => {
-    Swal.fire({
-        title: "آیا از حذف اقامتگاه اطمینان دارید؟",
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: "بله",
-        denyButtonText: `خیر`
-    }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
-        if (result.isConfirmed) {
-            Swal.fire("اقامتگاه حذف شد!", "", "success");
-        } else if (result.isDenied) {
-            Swal.fire("تغییرات ذخیره نشد", "", "info");
-        }
-    });
+  Swal.fire({
+    title: "آیا از حذف اقامتگاه اطمینان دارید؟",
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: "بله",
+    denyButtonText: `خیر`
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      Swal.fire("اقامتگاه حذف شد!", "", "success");
+    } else if (result.isDenied) {
+      Swal.fire("تغییرات ذخیره نشد", "", "info");
+    }
+  });
 }
 
 const Bank = () => {
-    const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(setPageTitle({ title: "اقامتگاه ها" }))
-    }, [])
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(setPageTitle({ title: "بانک" }))
+  }, [])
 
-    const [members, setMembers] = useState(TEAM_MEMBERS)
 
-    return (
-        <>
-            در حال ساخت ...
-        </>
-    )
+  const [members, setMembers] = useState(TEAM_MEMBERS)
+
+  return (
+    <>
+      <div className={"card w-full p-6 bg-base-100 shadow-xl mt-6 h-screen"}>
+
+        {/* Title for Card */}
+        <Subtitle styleClass={TopSideButtons ? "inline-block" : ""}>
+          بانک
+
+          {/* Top side button, show only if present */}
+          {
+            TopSideButtons && <div className="inline-block float-righ">{TopSideButtons}</div>
+          }
+        </Subtitle>
+
+        <div className="divider mt-2"></div>
+
+        {/** Card Body */}
+        <div className='h-full w-full pb-6 bg-base-100'>
+          در حال ساخت ...
+        </div>
+      </div>
+    </>
+  )
 }
 
 export default Bank

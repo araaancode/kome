@@ -9,7 +9,7 @@ import { openModal } from "../features/common/modalSlice"
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import { setPageTitle } from '../features/common/headerSlice'
-
+import Subtitle from "../components/Typography/Subtitle"
 
 // load icons
 import DeleteIcon from '@iconscout/react-unicons/icons/uil-trash-alt'
@@ -74,16 +74,34 @@ const Support = () => {
 
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(setPageTitle({ title: "غذادارها" }))
+    dispatch(setPageTitle({ title: "پشتیبانی" }))
   }, [])
 
   const [members, setMembers] = useState(TEAM_MEMBERS)
 
   return (
     <>
-        در حال ساخت ...
+      <div className={"card w-full p-6 bg-base-100 shadow-xl mt-6 h-screen"}>
+
+        {/* Title for Card */}
+        <Subtitle styleClass={TopSideButtons ? "inline-block" : ""}>
+          پشتیبانی
+
+          {/* Top side button, show only if present */}
+          {
+            TopSideButtons && <div className="inline-block float-righ">{TopSideButtons}</div>
+          }
+        </Subtitle>
+
+        <div className="divider mt-2"></div>
+
+        {/** Card Body */}
+        <div className='h-full w-full pb-6 bg-base-100'>
+          در حال ساخت ...
+        </div>
+      </div>
     </>
-)
+  )
 }
 
 export default Support

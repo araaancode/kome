@@ -61,7 +61,7 @@ function Comments() {
                                 <div className="border mt-4 mb-4"></div>
                                 <form className="form" action="" method="post">
                                     <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="پاسخ خود را در اینجا می توانید بنویسید..."></textarea>
-                                    <button className="btn btn-primary mt-8">پاسخ گویی</button>
+                                    <button className="btn bg-blue-800 text-white hover:bg-blue-900 mt-8">پاسخ گویی</button>
                                 </form>
 
 

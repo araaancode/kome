@@ -26,9 +26,9 @@ import ChatIcon from '@iconscout/react-unicons/icons/uil-chat'
 import CalendarIcon from '@iconscout/react-unicons/icons/uil-calender'
 import DriverIcon from '@iconscout/react-unicons/icons/uil-bus-school'
 import CircleIcon from '@iconscout/react-unicons/icons/uil-circle-layer'
+import { BiSupport } from "react-icons/bi";
 
-
-const iconClasses = `h-6 w-6`
+const iconClasses = `h-8 w-8 text-gray-800`
 const submenuIconClasses = `h-5 w-5`
 
 const routes = [
@@ -36,7 +36,7 @@ const routes = [
   {
     path: '/drivers/bookings',
     icon: <CalendarIcon size="140" className={iconClasses} />, 
-    name: 'لیست رزروها به تفکیک مبدا و مقصد',
+    name: 'لیست رزروها',
   },
   {
     // path: '/drivers/calendar', // url
@@ -89,7 +89,7 @@ const routes = [
   {
     // path: '/drivers/calendar', // url
     path: '/drivers/support', // url
-    icon: <CircleIcon className={iconClasses}/>, // icon component
+    icon: <BiSupport className={iconClasses}/>, // icon component
     name: 'پشتیبانی', // name that appear in Sidebar
   },
 

@@ -9,7 +9,7 @@ import { openModal } from "../features/common/modalSlice"
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import { setPageTitle } from '../features/common/headerSlice'
-
+import Subtitle from "../components/Typography/Subtitle"
 
 // load icons
 import DeleteIcon from '@iconscout/react-unicons/icons/uil-trash-alt'
@@ -73,7 +73,7 @@ const deleteUser = () => {
 const Prices = () => {
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(setPageTitle({ title: "اتوبوس دارها" }))
+        dispatch(setPageTitle({ title: "قیمت ها" }))
     }, [])
 
     const [members, setMembers] = useState(TEAM_MEMBERS)
@@ -81,7 +81,26 @@ const Prices = () => {
 
     return (
         <>
-            در حال ساخت ...
+
+            <div className={"card w-full p-6 bg-base-100 shadow-xl mt-6 h-screen"}>
+
+                {/* Title for Card */}
+                <Subtitle styleClass={TopSideButtons ? "inline-block" : ""}>
+                   قیمت ها
+
+                    {/* Top side button, show only if present */}
+                    {
+                        TopSideButtons && <div className="inline-block float-righ">{TopSideButtons}</div>
+                    }
+                </Subtitle>
+
+                <div className="divider mt-2"></div>
+
+                {/** Card Body */}
+                <div className='h-full w-full pb-6 bg-base-100'>
+                    در حال ساخت ...
+                </div>
+            </div>
         </>
     )
 }
