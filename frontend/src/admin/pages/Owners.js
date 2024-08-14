@@ -72,7 +72,7 @@ const deleteUser = () => {
 
 const Owners = () => {
     const dispatch = useDispatch()
-    
+
     useEffect(() => {
         dispatch(setPageTitle({ title: "ملک دارها" }))
     }, [])
@@ -83,7 +83,7 @@ const Owners = () => {
     return (
         <>
 
-            <TitleCard title="" topMargin="mt-2" TopSideButtons={<TopSideButtons />}>
+            <TitleCard title="ملک دارها" topMargin="mt-2" TopSideButtons={<TopSideButtons />}>
 
                 {/* Team Member list in table format loaded constant */}
                 <div className="overflow-x-auto w-full">

@@ -79,7 +79,7 @@ const Tickets = () => {
   return (
     <>
 
-      <TitleCard title="" topMargin="mt-2" TopSideButtons={<TopSideButtons />}>
+      <TitleCard title="تیکت ها" topMargin="mt-2" TopSideButtons={<TopSideButtons />}>
 
         {/* Team Member list in table format loaded constant */}
         <div className="overflow-x-auto w-full">
