@@ -79,12 +79,12 @@ const routes = [
     name: ' آگهی ها', // name that appear in Sidebar
   },
 
-  {
-    path: '/drivers/price', // url
-    // path: '/drivers/calendar', // url
-    icon: <CoinsIcon className={iconClasses}/>, // icon component
-    name: 'قیمت', // name that appear in Sidebar
-  },
+  // {
+  //   path: '/drivers/price', // url
+  //   // path: '/drivers/calendar', // url
+  //   icon: <CoinsIcon className={iconClasses}/>, // icon component
+  //   name: 'قیمت', // name that appear in Sidebar
+  // },
 
   {
     // path: '/drivers/calendar', // url

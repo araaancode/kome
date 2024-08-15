@@ -16,8 +16,10 @@ import Subtitle from "../components/Typography/Subtitle"
 import DeleteIcon from '@iconscout/react-unicons/icons/uil-trash-alt'
 import EditIcon from '@iconscout/react-unicons/icons/uil-edit-alt'
 
+
 import UpdateAdmin from "../features/admins/UpdateAdmin"
 
+import { CiCreditCard2 } from "react-icons/ci"
 
 const TopSideButtons = () => {
 
@@ -27,16 +29,7 @@ const TopSideButtons = () => {
     // dispatch(showNotification({ message: "Add New Member clicked", status: 1 }))
     dispatch(openModal({ title: "ایجاد اقامتگاه جدید", bodyType: MODAL_BODY_TYPES.ADD_NEW_ADMIN }))
   }
-
-
-
-  // return (
-  //     <div className="inline-block float-right">
-  //         <button className="btn px-6 btn-sm normal-case btn-primary" onClick={() => createNewUser()}>ایجاد کاربر جدید</button>
-  //     </div>
-  // )
 }
-
 
 const TEAM_MEMBERS = [
   { name: "اقامتگاه یک", avatar: "https://cdn-icons-png.flaticon.com/128/2082/2082563.png", city: "تهران", owner: "مالک یک", price: 1000, lastActive: "5 hr ago" },
@@ -48,30 +41,8 @@ const TEAM_MEMBERS = [
 
 ]
 
-const updateUser = () => {
-  alert("update user")
-}
-
-
-
-const deleteUser = () => {
-  Swal.fire({
-    title: "آیا از حذف اقامتگاه اطمینان دارید؟",
-    showDenyButton: true,
-    showCancelButton: true,
-    confirmButtonText: "بله",
-    denyButtonText: `خیر`
-  }).then((result) => {
-    /* Read more about isConfirmed, isDenied below */
-    if (result.isConfirmed) {
-      Swal.fire("اقامتگاه حذف شد!", "", "success");
-    } else if (result.isDenied) {
-      Swal.fire("تغییرات ذخیره نشد", "", "info");
-    }
-  });
-}
-
 const Bank = () => {
+
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(setPageTitle({ title: "بانک" }))
@@ -79,6 +50,40 @@ const Bank = () => {
 
 
   const [members, setMembers] = useState(TEAM_MEMBERS)
+  const [sheba, setSheba] = useState("")
+  const [errorPhoneMessage, setErrorPhoneMessage] = useState("")
+
+  const handleBankChange = (e) => {
+    setSheba(e.target.value);
+  };
+
+
+  const addAccount = () => {
+    dispatch(showNotification({ message: "به حساب بانکی متصل شد", status: 1 }))
+  }
+
+
+  const updateUser = () => {
+    alert("update user")
+  }
+
+  const deleteUser = () => {
+    Swal.fire({
+      title: "آیا از حذف اقامتگاه اطمینان دارید؟",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "بله",
+      denyButtonText: `خیر`
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire("اقامتگاه حذف شد!", "", "success");
+      } else if (result.isDenied) {
+        Swal.fire("تغییرات ذخیره نشد", "", "info");
+      }
+    });
+  }
+
 
   return (
     <>
@@ -98,7 +103,18 @@ const Bank = () => {
 
         {/** Card Body */}
         <div className='h-full w-full pb-6 bg-base-100'>
-          در حال ساخت ...
+          <div className="flex flex-col mb-6">
+            <label htmlFor="phone" className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600">شماره شبا</label>
+            <div className="relative">
+              <div className="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                <CiCreditCard2 className="w-8 h-8 text-gray-400" />
+              </div>
+              <input style={{ borderRadius: '5px' }} type="text" value={sheba}
+                onChange={handleBankChange} className="text-sm sm:text-base placeholder-gray-400 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-800" placeholder="شماره شبا" />
+            </div>
+            <span className='text-red-500 relative text-sm'>{errorPhoneMessage ? errorPhoneMessage : ""}</span>
+          </div>
+          <div className="mt-6"><button className="btn bg-blue-800 hover:bg-blue-900 text-white float-right" onClick={() => addAccount()}>اتصال به حساب بانکی</button></div>
         </div>
       </div>
     </>
