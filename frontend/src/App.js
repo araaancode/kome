@@ -129,12 +129,12 @@ function App() {
             <Route path="/owners/forgot-password" element={<OwnersForgotPassword />} />
             <Route path="/owners/register" element={<OwnersRegister />} /> */}
 
-            {/* owners pages */}
-            {/* <Route path="/cooks" element={<Navigate to={token ? "/cooks/welcome" : "/cooks/login"} replace />} />
+            {/* cooks pages */}
+            <Route path="/cooks" element={<Navigate to={token ? "/cooks/welcome" : "/cooks/login"} replace />} />
             <Route path="/cooks/*" element={<CooksLayout />} />
             <Route path="/cooks/login" element={<CooksLogin />} />
             <Route path="/cooks/forgot-password" element={<CooksForgotPassword />} />
-            <Route path="/cooks/register" element={<CooksRegister />} /> */}
+            <Route path="/cooks/register" element={<CooksRegister />} />
 
           </Routes>
         </Router>

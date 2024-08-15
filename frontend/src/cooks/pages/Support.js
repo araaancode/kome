@@ -9,7 +9,7 @@ import { openModal } from "../features/common/modalSlice"
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import { setPageTitle } from '../features/common/headerSlice'
-
+import Subtitle from "../components/Typography/Subtitle"
 
 // load icons
 import DeleteIcon from '@iconscout/react-unicons/icons/uil-trash-alt'
@@ -74,16 +74,74 @@ const Support = () => {
 
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(setPageTitle({ title: "غذادارها" }))
+    dispatch(setPageTitle({ title: "پشتیبانی" }))
   }, [])
 
   const [members, setMembers] = useState(TEAM_MEMBERS)
 
   return (
     <>
-        در حال ساخت ...
+      <div className={"card w-full p-6 bg-base-100 shadow-xl mt-6 h-screen"}>
+
+        {/* Title for Card */}
+        <Subtitle styleClass={TopSideButtons ? "inline-block" : ""}>
+          پشتیبانی
+
+          {/* Top side button, show only if present */}
+          {
+            TopSideButtons && <div className="inline-block float-righ">{TopSideButtons}</div>
+          }
+        </Subtitle>
+
+        <div className="divider mt-2"></div>
+
+        {/** Card Body */}
+        <div className='h-full w-full pb-6 bg-base-100'>
+          <div className="overflow-x-auto w-full">
+            <table className="table w-full">
+              <thead>
+                <tr>
+                  <th>نام و نام خانوادگی</th>
+                  <th>ایمیل</th>
+                  <th>شروع رزرو</th>
+                  <th>پایان رزرو</th>
+                  <th>حذف</th>
+                  <th>ویرایش</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  members.map((l, k) => {
+                    return (
+                      <tr key={k}>
+                        <td>
+                          <div className="flex items-center space-x-3">
+                            <div className="avatar">
+                              <div className="mask mask-circle w-12 h-12">
+                                <img className="w-6 h-6" src={l.avatar} alt="Avatar" />
+                              </div>
+                            </div>
+                            <div>
+                              <div className="font-bold mr-3">{l.name}</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>{l.email}</td>
+                        <td>{l.joinedOn}</td>
+                        <td>{l.lastActive}</td>
+                        <td><button onClick={() => deleteUser()}><DeleteIcon /></button></td>
+                        <td><button onClick={() => updateUser()}><EditIcon /></button></td>
+                      </tr>
+                    )
+                  })
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </>
-)
+  )
 }
 
 export default Support

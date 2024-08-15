@@ -69,7 +69,7 @@ function Orders() {
     return (
         <>
 
-            <TitleCard topMargin="mt-2" TopSideButtons={<TopSideButtons applySearch={applySearch} applyFilter={applyFilter} removeFilter={removeFilter} />}>
+            <TitleCard title="لیست سفارش ها" topMargin="mt-2" TopSideButtons={<TopSideButtons applySearch={applySearch} applyFilter={applyFilter} removeFilter={removeFilter} />}>
 
                 {/* Team Member list in table format loaded constant */}
                 <div className="overflow-x-auto w-full">

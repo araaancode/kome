@@ -28,21 +28,25 @@ import CalendarIcon from '@iconscout/react-unicons/icons/uil-calender'
 import DriverIcon from '@iconscout/react-unicons/icons/uil-bus-school'
 import CircleIcon from '@iconscout/react-unicons/icons/uil-circle-layer'
 import FoodIcon from '@iconscout/react-unicons/icons/uil-pizza-slice'
+import { BiListUl } from "react-icons/bi";
+import { BiSupport } from "react-icons/bi";
+import { PiChefHat,PiBowlFoodLight,PiCoins } from "react-icons/pi";
+import { VscVerified } from "react-icons/vsc";
 
 
-const iconClasses = `h-6 w-6`
+const iconClasses = `h-8 w-8 text-gray-800`
 const submenuIconClasses = `h-5 w-5`
 
 const routes = [
 
   {
     path: '/cooks/orders',
-    icon: <CalendarIcon size="140" className={iconClasses} />, 
+    icon: <BiListUl size="140" className={iconClasses} />, 
     name: 'لیست سفارش ها',
   },
   {
     path: '/cooks/cook-info', // url
-    icon: <FoodIcon className={iconClasses}/>, // icon component
+    icon: <PiChefHat className={iconClasses}/>, // icon component
     name: 'ثبت اطلاعات غذادار', // name that appear in Sidebar
   },
 
@@ -53,7 +57,7 @@ const routes = [
   },
   {
     path: '/cooks/cooks',
-    icon: <CakeIcon size="140" className={iconClasses} />, 
+    icon: <VscVerified size="140" className={iconClasses} />, 
     name: 'تایید یا عدم غذادار',
   },
    
@@ -76,17 +80,9 @@ const routes = [
     name: 'امتیاز',
   },
 
- 
-
-  {
-    path: '/cooks/price', // url
-    icon: <CoinsIcon className={iconClasses}/>, // icon component
-    name: 'قیمت', // name that appear in Sidebar
-  },
-
   {
     path: '/cooks/support', // url
-    icon: <CircleIcon className={iconClasses}/>, // icon component
+    icon: <BiSupport className={iconClasses}/>, // icon component
     name: 'پشتیبانی', // name that appear in Sidebar
   },
 

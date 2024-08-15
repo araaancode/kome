@@ -4,6 +4,8 @@ import SidebarSubmenu from './SidebarSubmenu';
 import XMarkIcon from '@heroicons/react/24/outline/XMarkIcon'
 import { useDispatch } from 'react-redux';
 
+import { RiTentLine } from "@remixicon/react";
+
 function LeftSidebar() {
     const location = useLocation();
 
@@ -18,17 +20,11 @@ function LeftSidebar() {
         <div className="drawer-side  z-30  ">
             <label htmlFor="left-sidebar-drawer" className="drawer-overlay"></label>
             <ul className="menu  pt-2 w-80 bg-base-100 min-h-full text-base-content">
-                <button className="btn btn-ghost bg-base-300  btn-circle z-50 top-0 right-0 mt-4 mr-2 absolute lg:hidden" onClick={() => close()}>
-                    <XMarkIcon className="h-5 inline-block w-5" />
-                </button>
-
-                <li className="mb-2 font-semibold text-xl">
-
-                    <Link to={'/drivers/welcome'}><img className="rounded rounded-20 w-10" src="/logo192.png" alt="Logo" />اقامتگاه</Link> </li>
+                <RiTentLine className='w-12 h-12 my-4 mx-6' />
                 {
                     routes.map((route, k) => {
                         return (
-                            <li className="" key={k}>
+                            <li style={{ fontSize: '16px' }} className="" key={k}>
                                 {
                                     route.submenu ?
                                         <SidebarSubmenu {...route} /> :
