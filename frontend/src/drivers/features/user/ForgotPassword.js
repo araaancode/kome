@@ -5,22 +5,28 @@ import ErrorText from '../../components/Typography/ErrorText'
 import InputText from '../../components/Input/InputText'
 import CheckCircleIcon from '@heroicons/react/24/solid/CheckCircleIcon'
 
-function ForgotPassword() {
+import { RiMailOpenLine } from "@remixicon/react"
 
-    const INITIAL_USER_OBJ = {
-        emailId: ""
-    }
+function ForgotPassword() {
 
     const [loading, setLoading] = useState(false)
     const [errorMessage, setErrorMessage] = useState("")
     const [linkSent, setLinkSent] = useState(false)
-    const [userObj, setUserObj] = useState(INITIAL_USER_OBJ)
+    const [email, setEmail] = useState("")
+
+  
+    const [errorEmailMessage, setErrorEmailMessage] = useState("")
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+    };
+
 
     const submitForm = (e) => {
         e.preventDefault()
         setErrorMessage("")
 
-        if (userObj.emailId.trim() === "") return setErrorMessage("Email Id is required! (use any value)")
+        if (email.trim() === "") return setErrorEmailMessage("ایمیل ضروری است!")
         else {
             setLoading(true)
             // Call API to send password reset link
@@ -29,18 +35,14 @@ function ForgotPassword() {
         }
     }
 
-    const updateFormValue = ({ updateType, value }) => {
-        setErrorMessage("")
-        setUserObj({ ...userObj, [updateType]: value })
-    }
-
+ 
     return (
-        <div className="min-h-screen bg-base-200 flex items-center">
+        <div className="min-h-screen bg-gray-50 flex items-center text-right">
             <div className="card mx-auto w-full max-w-5xl  shadow-xl">
                 <div className="grid  md:grid-cols-2 grid-cols-1  bg-base-100 rounded-xl">
                     <div className=''>
                         <div className="hero min-h-full rounded-l-xl bg-base-200">
-                            <div className="hero-content py-12">
+                            <div className="hero-content py-6">
                                 <div className="max-w-md">
                                     <h1 className="mb-10 text-center font-bold text-lg">فراموشی پسورد</h1>
                                     <div className="text-center mt-0 mb-35"><img src="https://wallpapercave.com/fuwp/uwp4328554.jpeg" alt="اقامتگاه" className="w-full rounded rounded-lg inline-block shadow-md"></img></div>
@@ -48,16 +50,16 @@ function ForgotPassword() {
                             </div>
                         </div>
                     </div>
-                    <div className='py-24 px-10'>
-                        <h2 className='text-2xl font-semibold mb-2 text-center'>فراموشی پسورد</h2>
+                    <div className='py-10 px-10'>
+                        <h2 className='text-2xl mb-2 text-center'>فراموشی پسورد</h2>
 
                         {
                             linkSent &&
                             <>
                                 <div className='text-center mt-8'><CheckCircleIcon className='inline-block w-32 text-success' /></div>
-                                <p className='my-4 text-xl font-bold text-center'>فرستادن لینک</p>
+                                <p className='my-4 text-xl font-bold text-center'> لینک فرستاده شد</p>
                                 <p className='mt-4 mb-8 font-semibold text-center'>ایمیل خود را برای تغییر پسورد بررسی کنید</p>
-                                <div className='text-center mt-4'><Link to="/admins/login"><button className="btn btn-block btn-primary ">ورود</button></Link></div>
+                                <div className='text-center mt-4'><Link to="/admins/login"><button className="btn btn-block bg-blue-800 text-white hover:bg-blue-900 mt-5">ورود</button></Link></div>
 
                             </>
                         }
@@ -65,20 +67,26 @@ function ForgotPassword() {
                         {
                             !linkSent &&
                             <>
-                                <p className='my-8 font-semibold text-center'>لینک تغییر پسورد به ایمیل شما فرستاده خواهد شد</p>
+                                <p className='my-8 text-center'>لینک تغییر پسورد به ایمیل شما فرستاده خواهد شد</p>
                                 <form onSubmit={(e) => submitForm(e)}>
 
-                                    <div className="mb-4">
-
-                                        <InputText type="emailId" defaultValue={userObj.emailId} updateType="emailId" containerStyle="mt-4" labelTitle="ایمیل" updateFormValue={updateFormValue} />
-
-
+                                    <div className="flex flex-col mb-2">
+                                        <label htmlFor="phone" className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600">ایمیل</label>
+                                        <div className="relative">
+                                            <div className="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                                                <RiMailOpenLine />
+                                            </div>
+                                            <input style={{ borderRadius: '5px' }} type="text" value={email}
+                                                onChange={handleEmailChange} className="text-sm sm:text-base placeholder-gray-400 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-800" placeholder="ایمیل" />
+                                        </div>
+                                        <span className='text-red-500 relative text-sm'>{errorEmailMessage ? errorEmailMessage : ""}</span>
                                     </div>
 
-                                    <ErrorText styleClass="mt-12">{errorMessage}</ErrorText>
-                                    <button type="submit" className={"btn mt-2 w-full btn-primary" + (loading ? " loading" : "")}>فرستادن لینک تغییر</button>
+                                    <div className="flex w-full">
+                                        <button type="submit" className="btn mt-5 w-full bg-blue-800 text-white hover:bg-blue-900">فرستادن لینک تغییر</button>
+                                    </div>
 
-                                    <div className='text-center mt-4'>حساب ندارید؟ <Link to="/drivers/register"><button className="  inline-block  hover:text-primary hover:underline hover:cursor-pointer transition duration-200"> ثبت نام </button></Link></div>
+                                    <div className='text-center mt-4'>حساب ندارید؟ <Link to="/admins/register">ثبت نام</Link></div>
                                 </form>
                             </>
                         }
