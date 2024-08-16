@@ -45,12 +45,12 @@ function ForgotPassword() {
                             <div className="hero-content py-6">
                                 <div className="max-w-md">
                                     <h1 className="mb-10 text-center font-bold text-lg">فراموشی پسورد</h1>
-                                    <div className="text-center mt-0 mb-35"><img src="https://media.istockphoto.com/id/909613994/photo/camping.webp?b=1&s=170667a&w=0&k=20&c=QAOWQ_ywegq2PA4sZdLitz6ljL_kW-zw3DBOvvA_uXg=" alt="اقامتگاه" className="w-full rounded rounded-lg inline-block shadow-md"></img></div>
+                                    <div className="text-center my-10"><img src="https://media.istockphoto.com/id/909613994/photo/camping.webp?b=1&s=170667a&w=0&k=20&c=QAOWQ_ywegq2PA4sZdLitz6ljL_kW-zw3DBOvvA_uXg=" alt="اقامتگاه" className="w-full rounded rounded-lg inline-block shadow-md"></img></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className='py-10 px-10'>
+                    <div className='py-10 px-10 mt-10'>
                         <h2 className='text-2xl mb-2 text-center'>فراموشی پسورد</h2>
 
                         {

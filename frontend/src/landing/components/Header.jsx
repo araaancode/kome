@@ -33,7 +33,7 @@ export default function Header() {
               <img
                 src="https://cdn-icons-png.flaticon.com/128/17384/17384295.png"
                 alt="Avatar"
-                className="w-full h-full object-cover rounded-full text-white"
+                className="w-full h-full object-cover rounded-full text-white p-1"
               />
             </div>
             <RiMenuLine className="text-white w-6 h-6 font-bold" />
