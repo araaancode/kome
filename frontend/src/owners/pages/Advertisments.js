@@ -8,13 +8,15 @@ import { CONFIRMATION_MODAL_CLOSE_TYPES, MODAL_BODY_TYPES } from '../utils/globa
 import { openModal } from "../features/common/modalSlice"
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-
+import { setPageTitle } from '../features/common/headerSlice'
+import Subtitle from "../components/Typography/Subtitle"
 
 // load icons
 import DeleteIcon from '@iconscout/react-unicons/icons/uil-trash-alt'
 import EditIcon from '@iconscout/react-unicons/icons/uil-edit-alt'
 
 import UpdateAdmin from "../features/admins/UpdateAdmin"
+
 
 
 const TopSideButtons = () => {
@@ -30,19 +32,19 @@ const TopSideButtons = () => {
 
     // return (
     //     <div className="inline-block float-right">
-    //         <button className="btn px-6 btn-sm normal-case btn-primary" onClick={() => createNewUser()}>ایجاد کاربر جدید</button>
+    //         <button className="btn px-6 btn-sm normal-case btn-primary" onClick={() => createNewUser()}>ایجاد آگهی جدید</button>
     //     </div>
     // )
 }
 
 
 const TEAM_MEMBERS = [
-    { name: "کاربر یک", avatar: "https://cdn-icons-png.flaticon.com/128/3069/3069172.png", email: "example@admin.test", role: "Owner", joinedOn: MomentJalali(new Date()).add(-5 * 1, 'days').format("jYYYY/jMM/jDD"), lastActive: "5 hr ago" },
-    { name: "کاربر دو", avatar: "https://cdn-icons-png.flaticon.com/128/2153/2153090.png", email: "example@admin.test", role: "Admin", joinedOn: MomentJalali(new Date()).add(-5 * 2, 'days').format("jYYYY/jMM/jDD"), lastActive: "15 min ago" },
-    { name: "کاربر سه", avatar: "https://cdn-icons-png.flaticon.com/128/1864/1864472.png", email: "example@admin.test", role: "Admin", joinedOn: MomentJalali(new Date()).add(-5 * 3, 'days').format("jYYYY/jMM/jDD"), lastActive: "20 hr ago" },
-    { name: "کاربر چهار", avatar: "https://cdn-icons-png.flaticon.com/128/1998/1998627.png", email: "example@admin.test", role: "Manager", joinedOn: MomentJalali(new Date()).add(-5 * 4, 'days').format("jYYYY/jMM/jDD"), lastActive: "1 hr ago" },
-    { name: "کاربر پنج", avatar: "https://cdn-icons-png.flaticon.com/128/1864/1864475.png", email: "example@admin.test", role: "Support", joinedOn: MomentJalali(new Date()).add(-5 * 5, 'days').format("jYYYY/jMM/jDD"), lastActive: "40 min ago" },
-    { name: "کاربر شش", avatar: "https://cdn-icons-png.flaticon.com/128/809/809052.png", email: "example@admin.test", role: "Support", joinedOn: MomentJalali(new Date()).add(-5 * 7, 'days').format("jYYYY/jMM/jDD"), lastActive: "5 hr ago" },
+    { name: "آگهی یک", avatar: "https://cdn-icons-png.flaticon.com/128/3069/3069172.png", email: "example@admin.test", role: "Owner", joinedOn: MomentJalali(new Date()).add(-5 * 1, 'days').format("jYYYY/jMM/jDD"), lastActive: "5 hr ago" },
+    { name: "آگهی دو", avatar: "https://cdn-icons-png.flaticon.com/128/2153/2153090.png", email: "example@admin.test", role: "Admin", joinedOn: MomentJalali(new Date()).add(-5 * 2, 'days').format("jYYYY/jMM/jDD"), lastActive: "15 min ago" },
+    { name: "آگهی سه", avatar: "https://cdn-icons-png.flaticon.com/128/1864/1864472.png", email: "example@admin.test", role: "Admin", joinedOn: MomentJalali(new Date()).add(-5 * 3, 'days').format("jYYYY/jMM/jDD"), lastActive: "20 hr ago" },
+    { name: "آگهی چهار", avatar: "https://cdn-icons-png.flaticon.com/128/1998/1998627.png", email: "example@admin.test", role: "Manager", joinedOn: MomentJalali(new Date()).add(-5 * 4, 'days').format("jYYYY/jMM/jDD"), lastActive: "1 hr ago" },
+    { name: "آگهی پنج", avatar: "https://cdn-icons-png.flaticon.com/128/1864/1864475.png", email: "example@admin.test", role: "Support", joinedOn: MomentJalali(new Date()).add(-5 * 5, 'days').format("jYYYY/jMM/jDD"), lastActive: "40 min ago" },
+    { name: "آگهی شش", avatar: "https://cdn-icons-png.flaticon.com/128/809/809052.png", email: "example@admin.test", role: "Support", joinedOn: MomentJalali(new Date()).add(-5 * 7, 'days').format("jYYYY/jMM/jDD"), lastActive: "5 hr ago" },
 
 ]
 
@@ -71,6 +73,11 @@ const deleteUser = () => {
 
 const Advertisments = () => {
 
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(setPageTitle({ title: "آگهی ها" }))
+    }, [])
+
     const [members, setMembers] = useState(TEAM_MEMBERS)
 
     const getRoleComponent = (role) => {
@@ -83,7 +90,65 @@ const Advertisments = () => {
 
     return (
         <>
-            در حال ساخت ...
+            <div className={"card w-full p-6 bg-base-100 shadow-xl mt-1 h-screen"}>
+
+                {/* Title for Card */}
+                <Subtitle styleClass={TopSideButtons ? "inline-block" : ""}>
+                    آگهی ها
+
+                    {/* Top side button, show only if present */}
+                    {
+                        TopSideButtons && <div className="inline-block float-righ">{TopSideButtons}</div>
+                    }
+                </Subtitle>
+
+                <div className="divider mt-2"></div>
+
+                {/** Card Body */}
+                <div className='h-full w-full pb-6 bg-base-100'>
+                    <div className="overflow-x-auto w-full">
+                        <table className="table w-full">
+                            <thead>
+                                <tr>
+                                    <th>نام و نام خانوادگی</th>
+                                    <th>ایمیل</th>
+                                    <th>شروع رزرو</th>
+                                    <th>پایان رزرو</th>
+                                    <th>حذف</th>
+                                    <th>ویرایش</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    members.map((l, k) => {
+                                        return (
+                                            <tr key={k}>
+                                                <td>
+                                                    <div className="flex items-center space-x-3">
+                                                        <div className="avatar">
+                                                            <div className="mask mask-circle w-12 h-12">
+                                                                <img className="w-6 h-6" src={l.avatar} alt="Avatar" />
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div className="font-bold mr-3">{l.name}</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>{l.email}</td>
+                                                <td>{l.joinedOn}</td>
+                                                <td>{l.lastActive}</td>
+                                                <td><button onClick={() => deleteUser()}><DeleteIcon /></button></td>
+                                                <td><button onClick={() => updateUser()}><EditIcon /></button></td>
+                                            </tr>
+                                        )
+                                    })
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }

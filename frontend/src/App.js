@@ -123,11 +123,11 @@ function App() {
             <Route path="/drivers/register" element={<DriversRegister />} />
 
             {/* owners pages */}
-            {/* <Route path="/owners" element={<Navigate to={token ? "/owners/welcome" : "/owners/login"} replace />} />
+            <Route path="/owners" element={<Navigate to={token ? "/owners/welcome" : "/owners/login"} replace />} />
             <Route path="/owners/*" element={<OwnersLayout />} />
             <Route path="/owners/login" element={<OwnersLogin />} />
             <Route path="/owners/forgot-password" element={<OwnersForgotPassword />} />
-            <Route path="/owners/register" element={<OwnersRegister />} /> */}
+            <Route path="/owners/register" element={<OwnersRegister />} />
 
             {/* cooks pages */}
             <Route path="/cooks" element={<Navigate to={token ? "/cooks/welcome" : "/cooks/login"} replace />} />

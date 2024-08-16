@@ -9,7 +9,7 @@ import { openModal } from "../features/common/modalSlice"
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import { setPageTitle } from '../features/common/headerSlice'
-
+import Subtitle from "../components/Typography/Subtitle"
 
 // load icons
 import DeleteIcon from '@iconscout/react-unicons/icons/uil-trash-alt'
@@ -38,12 +38,12 @@ const TopSideButtons = () => {
 
 
 const TEAM_MEMBERS = [
-  { name: "ملک دار یک", avatar: "https://cdn-icons-png.flaticon.com/128/4035/4035183.png", email: "example@admin.test", role: "Owner", joinedOn: MomentJalali(new Date()).add(-5 * 1, 'days').format("jYYYY/jMM/jDD"), lastActive: "5 hr ago" },
-  { name: "ملک دار دو", avatar: "https://cdn-icons-png.flaticon.com/128/1830/1830878.png", email: "example@admin.test", role: "Admin", joinedOn: MomentJalali(new Date()).add(-5 * 2, 'days').format("jYYYY/jMM/jDD"), lastActive: "15 min ago" },
-  { name: "ملک دار سه", avatar: "https://cdn-icons-png.flaticon.com/128/10551/10551576.png", email: "example@admin.test", role: "Admin", joinedOn: MomentJalali(new Date()).add(-5 * 3, 'days').format("jYYYY/jMM/jDD"), lastActive: "20 hr ago" },
-  { name: "ملک دار چهار", avatar: "https://cdn-icons-png.flaticon.com/128/6763/6763342.png", email: "example@admin.test", role: "Manager", joinedOn: MomentJalali(new Date()).add(-5 * 4, 'days').format("jYYYY/jMM/jDD"), lastActive: "1 hr ago" },
-  { name: "ملک دار پنج", avatar: "https://cdn-icons-png.flaticon.com/128/2934/2934121.png", email: "example@admin.test", role: "Support", joinedOn: MomentJalali(new Date()).add(-5 * 5, 'days').format("jYYYY/jMM/jDD"), lastActive: "40 min ago" },
-  { name: "ملک دار شش", avatar: "https://cdn-icons-png.flaticon.com/128/5190/5190547.png", email: "example@admin.test", role: "Support", joinedOn: MomentJalali(new Date()).add(-5 * 7, 'days').format("jYYYY/jMM/jDD"), lastActive: "5 hr ago" },
+  { name: "راننده یک", avatar: "https://cdn-icons-png.flaticon.com/128/4035/4035183.png", email: "example@admin.test", role: "Owner", joinedOn: MomentJalali(new Date()).add(-5 * 1, 'days').format("jYYYY/jMM/jDD"), lastActive: "5 hr ago" },
+  { name: "راننده دو", avatar: "https://cdn-icons-png.flaticon.com/128/1830/1830878.png", email: "example@admin.test", role: "Admin", joinedOn: MomentJalali(new Date()).add(-5 * 2, 'days').format("jYYYY/jMM/jDD"), lastActive: "15 min ago" },
+  { name: "راننده سه", avatar: "https://cdn-icons-png.flaticon.com/128/10551/10551576.png", email: "example@admin.test", role: "Admin", joinedOn: MomentJalali(new Date()).add(-5 * 3, 'days').format("jYYYY/jMM/jDD"), lastActive: "20 hr ago" },
+  { name: "راننده چهار", avatar: "https://cdn-icons-png.flaticon.com/128/6763/6763342.png", email: "example@admin.test", role: "Manager", joinedOn: MomentJalali(new Date()).add(-5 * 4, 'days').format("jYYYY/jMM/jDD"), lastActive: "1 hr ago" },
+  { name: "راننده پنج", avatar: "https://cdn-icons-png.flaticon.com/128/2934/2934121.png", email: "example@admin.test", role: "Support", joinedOn: MomentJalali(new Date()).add(-5 * 5, 'days').format("jYYYY/jMM/jDD"), lastActive: "40 min ago" },
+  { name: "راننده شش", avatar: "https://cdn-icons-png.flaticon.com/128/5190/5190547.png", email: "example@admin.test", role: "Support", joinedOn: MomentJalali(new Date()).add(-5 * 7, 'days').format("jYYYY/jMM/jDD"), lastActive: "5 hr ago" },
 
 ]
 
@@ -74,16 +74,74 @@ const Support = () => {
 
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(setPageTitle({ title: "غذادارها" }))
+    dispatch(setPageTitle({ title: "پشتیبانی" }))
   }, [])
 
   const [members, setMembers] = useState(TEAM_MEMBERS)
 
   return (
     <>
-        در حال ساخت ...
+      <div className={"card w-full p-6 bg-base-100 shadow-xl mt-1 h-screen"}>
+
+        {/* Title for Card */}
+        <Subtitle styleClass={TopSideButtons ? "inline-block" : ""}>
+          پشتیبانی
+
+          {/* Top side button, show only if present */}
+          {
+            TopSideButtons && <div className="inline-block float-righ">{TopSideButtons}</div>
+          }
+        </Subtitle>
+
+        <div className="divider mt-2"></div>
+
+        {/** Card Body */}
+        <div className='h-full w-full pb-6 bg-base-100'>
+          <div className="overflow-x-auto w-full">
+            <table className="table w-full">
+              <thead>
+                <tr>
+                  <th>نام و نام خانوادگی</th>
+                  <th>ایمیل</th>
+                  <th>شروع رزرو</th>
+                  <th>پایان رزرو</th>
+                  <th>حذف</th>
+                  <th>ویرایش</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  members.map((l, k) => {
+                    return (
+                      <tr key={k}>
+                        <td>
+                          <div className="flex items-center space-x-3">
+                            <div className="avatar">
+                              <div className="mask mask-circle w-12 h-12">
+                                <img className="w-6 h-6" src={l.avatar} alt="Avatar" />
+                              </div>
+                            </div>
+                            <div>
+                              <div className="font-bold mr-3">{l.name}</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>{l.email}</td>
+                        <td>{l.joinedOn}</td>
+                        <td>{l.lastActive}</td>
+                        <td><button onClick={() => deleteUser()}><DeleteIcon /></button></td>
+                        <td><button onClick={() => updateUser()}><EditIcon /></button></td>
+                      </tr>
+                    )
+                  })
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </>
-)
+  )
 }
 
 export default Support

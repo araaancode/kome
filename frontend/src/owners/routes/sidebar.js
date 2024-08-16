@@ -27,9 +27,11 @@ import CalendarIcon from '@iconscout/react-unicons/icons/uil-calender'
 import CircleIcon from '@iconscout/react-unicons/icons/uil-circle-layer'
 import HouseUserIcon from '@iconscout/react-unicons/icons/uil-house-user'
 import CampIcon from '@iconscout/react-unicons/icons/uil-fire'
+import { BiSupport } from "react-icons/bi";
 
+import { RiTentLine } from "@remixicon/react";
 
-const iconClasses = `h-6 w-6`
+const iconClasses = `h-8 w-8 text-gray-800`
 const submenuIconClasses = `h-5 w-5`
 
 const routes = [
@@ -77,14 +79,8 @@ const routes = [
   },
 
   {
-    path: '/owners/price', // url
-    icon: <CoinsIcon className={iconClasses}/>, // icon component
-    name: 'قیمت', // name that appear in Sidebar
-  },
-
-  {
     path: '/owners/support', // url
-    icon: <CircleIcon className={iconClasses}/>, // icon component
+    icon: <BiSupport className={iconClasses}/>, // icon component
     name: 'پشتیبانی', // name that appear in Sidebar
   },
 
