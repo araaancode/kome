@@ -24,6 +24,7 @@ import FavoritesPage from './landing/pages/FavoritesPage';
 import BankPage from './landing/pages/BankPage';
 import NotificationsPage from './landing/pages/NotificationsPage';
 import SupportPage from './landing/pages/SupportPage';
+import ForgotPasswordPage from './landing/pages/ForgotPasswordPage';
 
 
 import { UserContextProvider } from "./landing/components/UserContext";
@@ -89,6 +90,7 @@ function App() {
               <Route element={<PublicRoutes />}>
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
+                <Route path="/forgot-password" element={<ForgotPasswordPage />} />
               </Route>
               <Route element={<PrivateRoutes />}>
                 <Route path="/account/places" element={<HousesPage />} />
