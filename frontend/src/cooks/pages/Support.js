@@ -38,12 +38,12 @@ const TopSideButtons = () => {
 
 
 const TEAM_MEMBERS = [
-  { name: "راننده یک", avatar: "https://cdn-icons-png.flaticon.com/128/4035/4035183.png", email: "example@admin.test", role: "Owner", joinedOn: MomentJalali(new Date()).add(-5 * 1, 'days').format("jYYYY/jMM/jDD"), lastActive: "5 hr ago" },
-  { name: "راننده دو", avatar: "https://cdn-icons-png.flaticon.com/128/1830/1830878.png", email: "example@admin.test", role: "Admin", joinedOn: MomentJalali(new Date()).add(-5 * 2, 'days').format("jYYYY/jMM/jDD"), lastActive: "15 min ago" },
-  { name: "راننده سه", avatar: "https://cdn-icons-png.flaticon.com/128/10551/10551576.png", email: "example@admin.test", role: "Admin", joinedOn: MomentJalali(new Date()).add(-5 * 3, 'days').format("jYYYY/jMM/jDD"), lastActive: "20 hr ago" },
-  { name: "راننده چهار", avatar: "https://cdn-icons-png.flaticon.com/128/6763/6763342.png", email: "example@admin.test", role: "Manager", joinedOn: MomentJalali(new Date()).add(-5 * 4, 'days').format("jYYYY/jMM/jDD"), lastActive: "1 hr ago" },
-  { name: "راننده پنج", avatar: "https://cdn-icons-png.flaticon.com/128/2934/2934121.png", email: "example@admin.test", role: "Support", joinedOn: MomentJalali(new Date()).add(-5 * 5, 'days').format("jYYYY/jMM/jDD"), lastActive: "40 min ago" },
-  { name: "راننده شش", avatar: "https://cdn-icons-png.flaticon.com/128/5190/5190547.png", email: "example@admin.test", role: "Support", joinedOn: MomentJalali(new Date()).add(-5 * 7, 'days').format("jYYYY/jMM/jDD"), lastActive: "5 hr ago" },
+  { name: "آشپز یک", avatar: "https://cdn-icons-png.flaticon.com/128/4035/4035183.png", email: "example@admin.test", role: "Owner", joinedOn: MomentJalali(new Date()).add(-5 * 1, 'days').format("jYYYY/jMM/jDD"), lastActive: "5 hr ago" },
+  { name: "آشپز دو", avatar: "https://cdn-icons-png.flaticon.com/128/1830/1830878.png", email: "example@admin.test", role: "Admin", joinedOn: MomentJalali(new Date()).add(-5 * 2, 'days').format("jYYYY/jMM/jDD"), lastActive: "15 min ago" },
+  { name: "آشپز سه", avatar: "https://cdn-icons-png.flaticon.com/128/10551/10551576.png", email: "example@admin.test", role: "Admin", joinedOn: MomentJalali(new Date()).add(-5 * 3, 'days').format("jYYYY/jMM/jDD"), lastActive: "20 hr ago" },
+  { name: "آشپز چهار", avatar: "https://cdn-icons-png.flaticon.com/128/6763/6763342.png", email: "example@admin.test", role: "Manager", joinedOn: MomentJalali(new Date()).add(-5 * 4, 'days').format("jYYYY/jMM/jDD"), lastActive: "1 hr ago" },
+  { name: "آشپز پنج", avatar: "https://cdn-icons-png.flaticon.com/128/2934/2934121.png", email: "example@admin.test", role: "Support", joinedOn: MomentJalali(new Date()).add(-5 * 5, 'days').format("jYYYY/jMM/jDD"), lastActive: "40 min ago" },
+  { name: "آشپز شش", avatar: "https://cdn-icons-png.flaticon.com/128/5190/5190547.png", email: "example@admin.test", role: "Support", joinedOn: MomentJalali(new Date()).add(-5 * 7, 'days').format("jYYYY/jMM/jDD"), lastActive: "5 hr ago" },
 
 ]
 
@@ -81,7 +81,7 @@ const Support = () => {
 
   return (
     <>
-      <div className={"card w-full p-6 bg-base-100 shadow-xl mt-6 h-screen"}>
+      <div className={"card w-full p-6 bg-base-100 shadow-xl mt-1 h-screen"}>
 
         {/* Title for Card */}
         <Subtitle styleClass={TopSideButtons ? "inline-block" : ""}>
