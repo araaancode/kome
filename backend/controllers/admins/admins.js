@@ -208,8 +208,30 @@ exports.changeAdminRole = (req, res) => {
 // # description -> HTTP VERB -> Accesss -> Access Type
 // # get all admins -> GET -> SUPER Admin -> PRIVATE
 // @route = /api/admins
-exports.getAdmins = (req, res) => {
-    res.send("admin get all admins")
+exports.getAdmins = async (req, res) => {
+    try {
+        let admins = await Admin.find({})
+        if (admins) {
+            return res.status(StatusCodes.OK).json({
+                status: 'success',
+                msg: "ادمین ها پیدا شدند",
+                count: admins.length,
+                admins: admins
+            })
+        } else {
+            return res.status(StatusCodes.BAD_REQUEST).json({
+                status: 'failure',
+                msg: "ادمین ها پیدا نشدند"
+            })
+        }
+    } catch (error) {
+        console.error(error.message);
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+            status: 'failure',
+            msg: "خطای داخلی سرور",
+            error
+        });
+    }
 }
 
 
@@ -217,17 +239,29 @@ exports.getAdmins = (req, res) => {
 // # description -> HTTP VERB -> Accesss -> Access Type
 // # get single admins -> GET -> SUPER Admin -> PRIVATE
 // @route = /api/admins/:adminId
-exports.getAdmin = (req, res) => {
-    res.send("admin get single admin")
-}
-
-
-// *** admins crud ***
-// # description -> HTTP VERB -> Accesss -> Access Type
-// # delete admin -> DELETE -> SUPER Admin -> PRIVATE
-// @route = /api/admins/:adminId
-exports.deleteAdmin = (req, res) => {
-    res.send("admin delete admin")
+exports.getAdmin = async(req, res) => {
+    try {
+        let admin = await Admin.findById(req.params.adminId)
+        if (admin) {
+            return res.status(StatusCodes.OK).json({
+                status: 'success',
+                msg: "ادمین پیدا شد",
+                admin: admin
+            })
+        } else {
+            return res.status(StatusCodes.BAD_REQUEST).json({
+                status: 'failure',
+                msg: "ادمین پیدا نشد"
+            })
+        }
+    } catch (error) {
+        console.error(error.message);
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+            status: 'failure',
+            msg: "خطای داخلی سرور",
+            error
+        });
+    }
 }
 
 

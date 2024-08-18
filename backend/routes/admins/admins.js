@@ -23,6 +23,5 @@ router.get('/finance', adminCtrls.finance)
 router.put('/change-admin-role', adminCtrls.changeAdminRole)
 router.get('/', adminCtrls.getAdmins)
 router.get('/:adminId', adminCtrls.getAdmin)
-router.delete('/:adminId', adminCtrls.deleteAdmin)
 
 module.exports = router
