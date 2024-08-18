@@ -4,22 +4,33 @@ const validator = require('validator');
 const bcrypt = require('bcryptjs');
 
 const adminSchema = new mongoose.Schema({
-  firstName: {
-    type: String,
-  },
-  lastName: {
+  name: {
     type: String,
   },
   username: {
     type: String,
     trim: true,
-    unique: true,
     min: 3,
     max: 20
   },
+
+  nationalCode: {
+    type: String,
+    trim: true,
+    min: 10,
+    max: 10
+  },
+  gender: {
+    type: String,
+  },
+  city: {
+    type: String,
+  },
+  province: {
+    type: String,
+  },
   email: {
     type: String,
-    unique: true,
     lowercase: true,
     validate: [validator.isEmail, 'Please provide a valid email']
   },
@@ -40,24 +51,26 @@ const adminSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ['superadmin', 'admin', 'moderator'],
     default: 'admin'
   },
   password: {
     type: String,
     required: [true, 'Please provide a password'],
     minlength: 8,
-    select: false
   },
-
   passwordChangedAt: Date,
   passwordResetToken: String,
   passwordResetExpires: Date,
   active: {
     type: Boolean,
     default: true,
-    select: false
-  }
+  },
+  favorites: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'House',
+    }
+  ],
 }, { timestamps: true });
 
 adminSchema.pre('save', async function (next) {

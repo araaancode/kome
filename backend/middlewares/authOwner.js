@@ -27,3 +27,5 @@ exports.authOwner = async (req, res, next) => {
         })
     }
 }
+
+module.exports = Owner

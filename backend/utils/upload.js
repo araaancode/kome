@@ -1,17 +1,18 @@
 const multer = require('multer')
 const path = require('path');
 const mkdirp = require('mkdirp');
-const avatarsDir = path.join(__dirname, '../uploads/ownerAvatars/');
+const ownerAvatarDir = path.join(__dirname, '../uploads/ownerAvatars/');
 const houseCoverImagesDir = path.join(__dirname, '../uploads/houseCoverImages/');
 const userAvatarDir = path.join(__dirname, '../uploads/userAvatarDir/');
+const adminAvatarDir = path.join(__dirname, '../uploads/adminAvatarDir/');
 
 module.exports = {
     // owner avatar
     ownerAvatarUpload: multer({
         storage: multer.diskStorage({
             destination: function (req, file, cb) {
-                const made = mkdirp.sync(avatarsDir);
-                cb(null, avatarsDir)
+                const made = mkdirp.sync(ownerAvatarDir);
+                cb(null, ownerAvatarDir)
             },
             filename: function (req, file, cb) {
                 cb(null, Date.now() + path.extname(file.originalname));
@@ -33,7 +34,7 @@ module.exports = {
     }),
 
 
-    // user cover
+    // user avatar
     userUpload: multer({
         storage: multer.diskStorage({
             destination: function (req, file, cb) {
@@ -44,5 +45,19 @@ module.exports = {
                 cb(null, Date.now() + path.extname(file.originalname));
             }
         })
-    })
+    }),
+
+    // admin avatar
+    adminUpload: multer({
+        storage: multer.diskStorage({
+            destination: function (req, file, cb) {
+                const made = mkdirp.sync(adminAvatarDir);
+                cb(null, adminAvatarDir)
+            },
+            filename: function (req, file, cb) {
+                cb(null, Date.now() + path.extname(file.originalname));
+            }
+        })
+    }),
+
 }
