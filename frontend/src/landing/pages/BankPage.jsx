@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { RiTentLine, RiUser3Fill, RiSearchLine, RiCalendar2Line, RiLogoutBoxRLine, RiHeart2Line, RiBankCard2Line, RiNotificationLine, RiCustomerService2Line, RiCameraFill } from "@remixicon/react";
 import { FaCamera } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams,useNavigate } from "react-router-dom";
 import axios from "axios"
 import HeaderLog from '../components/HeaderLog';
 import Footer from "../components/Footer"
@@ -18,6 +18,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const BankPage = () => {
 
   const userToken = localStorage.getItem("userToken") ? localStorage.getItem("userToken") : null
+  const navigate = useNavigate();
 
   const [name, setName] = useState('')
   const [user, setUser] = useState('')
@@ -34,6 +35,13 @@ const BankPage = () => {
       })
       .catch((err) => console.error(err));
   }, [])
+
+  function logout() {
+    localStorage.removeItem("userToken")
+    navigate('/');
+  }
+
+
 
   return (
     <>
@@ -109,10 +117,10 @@ const BankPage = () => {
             </Link>
           </div>
           <div className='my-6 px-8'>
-            <Link to="/logout">
+            <Link to="/">
               <li className="flex items-center mb-2">
                 <span className="mr-2 text-gray-400"><RiLogoutBoxRLine /></span>
-                <span style={{ fontSize: '18px' }} className="mr-4">خروج</span>
+                <button className="mx-4" onClick={logout}>خروج</button>
               </li>
             </Link>
           </div>
@@ -139,7 +147,7 @@ const BankPage = () => {
                       className="block w-full border border-gray-400 rounded-md px-4 leading-tight focus:outline-none"
                       id="first-name"
                       type="text"
-                      style={{ borderRadius: '5px', padding: '15px',height: '60px' }}
+                      style={{ borderRadius: '5px', padding: '15px', height: '60px' }}
                     />
                   </div>
                   <div className="w-full md:w-1/2 px-3">
@@ -153,7 +161,7 @@ const BankPage = () => {
                       className="block w-full border border-gray-400 rounded-md px-4 leading-tight focus:outline-none"
                       id="firstName"
                       type="text"
-                      style={{ borderRadius: '5px', padding: '15px',height: '60px' }}
+                      style={{ borderRadius: '5px', padding: '15px', height: '60px' }}
 
                     />
                   </div>

@@ -48,8 +48,7 @@ import PhotoCard from "../components/PhotoCard"
 const itemsPerPage = 8;
 
 const SearchResultsPage = () => {
-  const { userInfo } = useSelector((state) => state.auth)
-  const dispatch = useDispatch()
+
 
 
   // search functionality

@@ -1,4 +1,4 @@
-import { Link, useLocation,useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useContext, useState } from "react";
 
@@ -24,13 +24,12 @@ export default function AccountNav() {
     return classes;
   }
 
-  
 
 
-  async function logout() {
-    await axios.post('/api/logout');
+
+  function logout() {
+    localStorage.removeItem("userToken")
     navigate('/');
-    setUser(null);
   }
 
   return (

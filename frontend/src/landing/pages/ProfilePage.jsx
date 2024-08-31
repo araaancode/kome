@@ -95,15 +95,11 @@ const ProfilePage = () => {
       });
   }
 
-  const logout = () => {
-    axios('/api/users/auth/logout').then((res) => {
-      localStorage.removeItem("userToken")
-      navigate('/')
-
-    }).catch((err) => {
-      console.log(err);
-    });
+  function logout() {
+    localStorage.removeItem("userToken")
+    navigate('/');
   }
+
 
   return (
     <>
