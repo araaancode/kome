@@ -76,35 +76,35 @@ exports.updateProfile = async (req, res) => {
 // # update admin avatar -> PUT -> Admin -> PRIVATE
 // @route = /api/admins/update-avatar
 exports.updateAvatar = async (req, res) => {
-    console.log(req.file.filename);
-    try {
-        await Admin.findByIdAndUpdate(
-            req.admin._id,
-            {
-                avatar: req.file.filename,
-            },
-            { new: true }
-        ).then((admin) => {
-            if (admin) {
-                res.status(StatusCodes.OK).json({
-                    msg: 'آواتار ادمین ویرایش شد',
-                    admin,
-                })
-            }
-        }).catch(err => {
-            console.log(err)
-            res.status(StatusCodes.BAD_REQUEST).json({
-                msg: 'آواتار ادمین ویرایش نشد',
-                err,
-            })
-        })
-    } catch (error) {
-        console.log(error);
-        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-            msg: "خطای داخلی سرور",
-            error: error
-        })
-    }
+    res.send(req.file);
+    // try {
+    //     await Admin.findByIdAndUpdate(
+    //         req.admin._id,
+    //         {
+    //             avatar: req.file.filename,
+    //         },
+    //         { new: true }
+    //     ).then((admin) => {
+    //         if (admin) {
+    //             res.status(StatusCodes.OK).json({
+    //                 msg: 'آواتار ادمین ویرایش شد',
+    //                 admin,
+    //             })
+    //         }
+    //     }).catch(err => {
+    //         console.log(err)
+    //         res.status(StatusCodes.BAD_REQUEST).json({
+    //             msg: 'آواتار ادمین ویرایش نشد',
+    //             err,
+    //         })
+    //     })
+    // } catch (error) {
+    //     console.log(error);
+    //     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+    //         msg: "خطای داخلی سرور",
+    //         error: error
+    //     })
+    // }
 }
 
 
@@ -153,11 +153,23 @@ exports.getNotifications = async (req, res) => {
 
 
 
+
+
 // # description -> HTTP VERB -> Accesss -> Access Type
 // # get admin single notification -> GET -> Admin -> PRIVATE
 // @route = /api/admins/notifications/:notificationId
-exports.getNotification = (req, res) => {
-    res.send("admin get single notifications")
+exports.getNotification = async(req, res) => {
+    try {
+        const notification = await AdminNotification.findById({ _id:req.params.notificationId })
+        res.status(StatusCodes.OK).json({
+            status: 'success',
+            msg: 'اعلان دریافت شد ',
+            success: true,
+            data: notification,
+        });
+    } catch (err) {
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ status: 'failure', success: false, error: err.message });
+    }
 }
 
 // # description -> HTTP VERB -> Accesss -> Access Type

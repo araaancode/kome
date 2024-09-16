@@ -52,6 +52,7 @@ module.exports = {
         storage: multer.diskStorage({
             destination: function (req, file, cb) {
                 const made = mkdirp.sync(adminAvatarDir);
+                console.log(made);
                 cb(null, adminAvatarDir)
             },
             filename: function (req, file, cb) {

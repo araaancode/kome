@@ -13,15 +13,16 @@ router.put('/update-profile', authAdmin, adminCtrls.updateProfile)
 
 router.put('/update-avatar', authAdmin, adminUpload.single('avatar'), adminCtrls.updateAvatar)
 
-router.post('/notifications', adminCtrls.createNotification)
+router.post('/notifications', authAdmin, adminCtrls.createNotification)
 router.get('/notifications', authAdmin, adminCtrls.getNotifications)
-router.put('/notifications/:notificationId/mark', adminCtrls.markNotification)
+router.get('/notifications/:notificationId', authAdmin, adminCtrls.getNotification)
+router.put('/notifications/:notificationId/mark', authAdmin, adminCtrls.markNotification)
 
 // router.get('/notifications/:notificationId', adminCtrls.getNotification)
 
-router.get('/finance', adminCtrls.finance)
-router.put('/change-admin-role', adminCtrls.changeAdminRole)
-router.get('/', adminCtrls.getAdmins)
-router.get('/:adminId', adminCtrls.getAdmin)
+router.get('/finance', authAdmin, adminCtrls.finance)
+router.put('/change-admin-role', authAdmin, adminCtrls.changeAdminRole)
+router.get('/', authAdmin, adminCtrls.getAdmins)
+router.get('/:adminId', authAdmin, adminCtrls.getAdmin)
 
 module.exports = router
