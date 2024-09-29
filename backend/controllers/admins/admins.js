@@ -108,8 +108,6 @@ exports.updateAvatar = async (req, res) => {
 }
 
 
-
-
 // # description -> HTTP VERB -> Accesss -> Access Type
 // # create admin notification -> PUT -> Admin -> PRIVATE
 // @route = /api/admins/notifications
@@ -150,9 +148,6 @@ exports.getNotifications = async (req, res) => {
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ status: 'failure', success: false, error: err.message });
     }
 }
-
-
-
 
 
 // # description -> HTTP VERB -> Accesss -> Access Type
@@ -211,8 +206,35 @@ exports.finance = (req, res) => {
 // # description -> HTTP VERB -> Accesss -> Access Type
 // # get admin finance -> GET -> SUPER Admin -> PRIVATE
 // @route = /api/admins/change-admin-role
-exports.changeAdminRole = (req, res) => {
-    res.send("admin change admin role")
+exports.changeAdminRole = async(req, res) => {
+    try {
+        await Admin.findByIdAndUpdate(
+            req.admin._id,
+            {
+               role:req.body.role,
+            },
+            { new: true }
+        ).then((user) => {
+            if (user) {
+                res.status(StatusCodes.OK).json({
+                    msg: ' نقش ادمین تغییر کرد ',
+                    user,
+                })
+            }
+        }).catch((error) => {
+            console.log(error);
+            res.status(StatusCodes.BAD_REQUEST).json({
+                msg: "نقش تغییر نکرد",
+                error: error
+            })
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+            msg: "خطای داخلی سرور",
+            error: error
+        })
+    }
 }
 
 

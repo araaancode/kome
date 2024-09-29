@@ -51,8 +51,10 @@ const adminSchema = new mongoose.Schema({
   },
   role: {
     type: String,
+    enum: ['superadmin', 'admin', 'moderator'],
     default: 'admin'
   },
+
   password: {
     type: String,
     required: [true, 'Please provide a password'],
